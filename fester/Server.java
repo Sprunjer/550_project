@@ -26,7 +26,7 @@ public class Server {
         // get object reference from the servant
         org.omg.CORBA.Object ref =
                 rootpoa.servant_to_reference(festerobj);
-        Auction href = AuctionHelper.narrow(ref);
+        auction_fest href = AuctionHelper.narrow(ref);
 
         // get the root naming context
         // NameService invokes the name service
