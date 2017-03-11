@@ -37,8 +37,8 @@ public interface auction_client extends auction_clientOperations, org.omg.CORBA.
                     System.out.println("Enter the crossponding number");
                     System.out.println("Enter 1 to see the Auction Status");
                     System.out.println("Enter 2 to bid on the price");
-                    System.out.println("Enter 3 to see the bid status")
-                    System.out.println("Enter 4 if you want leave ")
+                    System.out.println("Enter 3 to see the bid status");
+                    System.out.println("Enter 4 if you want leave ");
 
                     String prompt;
 
@@ -49,7 +49,7 @@ public interface auction_client extends auction_clientOperations, org.omg.CORBA.
                     if (choice_checker == 1) //view auction status
                     {
                         auction_fest.auction_clientPackage.auction_status status =
-                                new auction_fest.auction_clientPackage.auction_status status();
+                                new auction_fest.auction_clientPackage.auction_status();
                         status = fester.view_auction_status();
                         String message = "User Name:" + status.user + " Item: " + status.item +
                                 " Current Price: " + status.currentPrice + " is the highest bidder at the moment\n";
