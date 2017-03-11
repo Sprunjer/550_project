@@ -55,7 +55,7 @@ public interface auction_client extends auction_clientOperations, org.omg.CORBA.
                                 " Current Price: " + status.currentPrice + " is the highest bidder at the moment\n";
                         System.out.println(message);
 
-                    } else if (choice_checker == 2) //bid
+                    } else if (choice_checker == 2) // if the choice is 2 this will be a bid
                     {
                         try {
 
@@ -77,7 +77,7 @@ public interface auction_client extends auction_clientOperations, org.omg.CORBA.
                             System.out.println(e);
                         }
 
-                    } else if (choice_checker == 3) //view bid status
+                    } else if (choice_checker == 3) //if choice is 2 then this weill be checking the choice
                     {
                         try {
                             String name = StdinReader.readLine("Please enter your name here: ");
