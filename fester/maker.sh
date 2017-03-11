@@ -1,0 +1,1 @@
+idlj -fall AuctionFest.idl

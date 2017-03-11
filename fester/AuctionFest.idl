@@ -1,0 +1,36 @@
+module auction_fest {
+   interface auction_client  {
+
+         typedef struct auction_status{
+	      string user;
+          string item;
+	      float  currentPrice;
+	} Status;
+
+
+        exception OfferItemException { string description; };
+	    exception BidItemException { string description; };
+	    exception SellItemException { string description; };
+	    exception StatusException { string description; };
+
+	
+
+	boolean offer(in string seller_name, in string item_name, in float starting_price) raises (OfferItemException) ;
+        boolean sell(in string item_name)  raises (SellItemException);
+        boolean bid(in string user_name, in float bid_price)
+			raises (BidItemException);
+
+
+    string view_high_bidder(in string itemName)
+			raises (SellItemException);
+
+	string view_bid_status(in string userId)
+         		raises (BidItemException);
+
+	string view_auction_status()  raises (StatusException);
+
+
+  };
+};
+
+
