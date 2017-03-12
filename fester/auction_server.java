@@ -53,7 +53,7 @@ public class Seller {
                     System.out.println("Enter 1 to sell your item");
                     System.out.println("Enter 2 to close the cell");
                     System.out.println("Enter 3 to see the bid status");
-					System.out.println("Enter 4 to see the see the auction status");
+		    System.out.println("Enter 4 to see the see the auction status");
                     System.out.println("Enter 5 if you want leave ");
 
                     String prompt;
@@ -85,11 +85,11 @@ public class Seller {
 					
                         
 
-                    } else if (choice_checker == 2) // if the choice is 2 this will be a bid
+                    } else if (choice_checker == 2) 
                     {
                         try {
 
-                        String name_item = StdinReader.readLine("Please Enter The name of item that want to sell")      
+                        String item_name = StdinReader.readLine("Please Enter The name of item that want to sell")      
 						boolean entered_correctly = fester.sell(item_name)
 
                         } catch (Exception e)
@@ -98,12 +98,12 @@ public class Seller {
                             System.out.println(e);
                         }
 
-                    } else if (choice_checker == 3) //if choice is 2 then this weill be checking the choice
+                    } else if (choice_checker == 3) 
                     {
                         try {
-                            String name = StdinReader.readLine("Please enter your name here: ");
+                            String price = StdinReader.readLine("Please enter your price here: ");
 
-                            String msg_fester = fester.view_bid_status(name);
+                            String msg_fester = fester.view_bid_status(price);
 
                             System.out.println(msg_fester + "\n");
 
@@ -113,6 +113,16 @@ public class Seller {
                             System.out.println(e);
                         }
                     }
+		    else if (choice_checker == 4)
+		    {
+			  
+                           view_auction_status();
+                            
+                        } catch (Exception e)
+
+                        {
+                            System.out.println(e);
+                        }
 
                 }//end of while
 
