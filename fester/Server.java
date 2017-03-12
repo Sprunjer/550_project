@@ -16,8 +16,8 @@ public class Server {
         ORB orb = ORB.init(args, null);
 
         // create an implementation and register it with the ORB
-        auction_server festerobj = new auction_server();
-        festerobj.setORB(orb);
+        auction_server festerobj = new auction_server(orb);
+      
         // get reference to rootpoa & activate the POAManager
         POA rootpoa = POAHelper.narrow(
                 orb.resolve_initial_references("RootPOA"));
@@ -26,7 +26,7 @@ public class Server {
         // get object reference from the servant
         org.omg.CORBA.Object ref =
                 rootpoa.servant_to_reference(festerobj);
-        auction_fest href = AuctionHelper.narrow(ref);
+        auction_fest href = auction_clientHelper.narrow(ref);
 
         // get the root naming context
         // NameService invokes the name service
