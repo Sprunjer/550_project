@@ -28,7 +28,7 @@ public interface auction_client extends auction_clientOperations, org.omg.CORBA.
 
                 // resolve the Object Reference in Naming
 
-                auction_fest fester = auction_clientHelper.narrow(ncRef.resolve_str("Auction_Fest"));
+                auction_fest fester = auction_clientHelper.narrow(ncRef.resolve_str("auction_fest"));
 
                 int choice_checker = 0;
 
