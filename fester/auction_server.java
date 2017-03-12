@@ -1,28 +1,125 @@
+
+
+package auction_fest; 
 import auction_fest.*;
-package auction_fest;
 import org.omg.CORBA.*;
 import org.omg.CosNaming.*;
-import org.omg.PortableServer.*;
-import org.omg.PortableServer.POA;
 import org.omg.CosNaming.NamingContextPackage.*;
+import java.io.*; 
 
-public  class auction_server extends auction_clientPOA.java {
-    private  String message = "\Are you ready to get something done here?\n"
-    private ORB orb;
+public class Seller {
+  public static void main(String args[]) {
+    try {
+      // create and initialize the ORB
+      ORB orb = ORB.init(args, null);
 
+      // get the root naming context
+      org.omg.CORBA.Object objRef = 
+        orb.resolve_initial_references("NameService");
 
+      // Use NamingContextExt instead of NamingContext. This is 
+      // part of the Interoperable Naming Service.  
+      NamingContextExt ncRef = 
+        NamingContextExtHelper.narrow(objRef);
+ 
+      // resolve the Object Reference in Naming
+  
+      auction_fest fester = auction_clientHelper.narrow(ncRef.resolve_str(auction_fest));
 
-    public void setOrb(ORB orb_val)
-    {
-        orb= orb_val;
+    
+    public static void main(String args[]) {
+            try {
+                // create and initialize the ORB
+                ORB orb = ORB.init(args, null);
+
+                // get the root naming context
+                org.omg.CORBA.Object objRef =
+                        orb.resolve_initial_references("NameService");
+
+                // Use NamingContextExt instead of NamingContext. This is
+                // part of the Interoperable Naming Service.
+                NamingContextExt ncRef =
+                        NamingContextExtHelper.narrow(objRef);
+
+                // resolve the Object Reference in Naming
+
+                auction_fest fester = auction_clientHelper.narrow(ncRef.resolve_str("auction_fest"));
+
+                int choice_checker = 0;
+
+                while (choice_checker != 5) {
+                    System.out.println("Thank you for coming to our aucton program\n");
+                    System.out.println("Enter the crossponding number");
+                    System.out.println("Enter 1 to sell your item");
+                    System.out.println("Enter 2 to close the cell");
+                    System.out.println("Enter 3 to see the bid status");
+					System.out.println("Enter 4 to see the see the auction status");
+                    System.out.println("Enter 5 if you want leave ");
+
+                    String prompt;
+
+                    prompt = StdinReader.readLine("Choose 1 to 4: ");
+
+                    choice_checker = Integer.parseInt(prompt);
+
+                    if (choice_checker == 1) //view auction status
+                    {
+                        
+					 String seller_name = StdinReader.readLine(" Please enter your seller name")
+					 String item_name = StdinReader.readLine("Please enter the item name")
+					 float starting_price = StdinReader.readLine("Please enter the starting price")
+					 
+					 
+					 boolean entered_correctly = fester.offer(seller_name,starting_price);
+					 
+					 if (entered_correctly=true)
+					      System.out.println(" Good job. Now hope that it will be sold");
+						 
+					else
+					
+					      System.out.println(" Not yet. Do it again");
+						  }
+					 
+					   catch (Exception e){System.out.println(e);}
+			
+					
+                        
+
+                    } else if (choice_checker == 2) // if the choice is 2 this will be a bid
+                    {
+                        try {
+
+                        String name_item = StdinReader.readLine("Please Enter The name of item that want to sell")      
+						boolean entered_correctly = fester.sell(item_name)
+
+                        } catch (Exception e)
+
+                        {
+                            System.out.println(e);
+                        }
+
+                    } else if (choice_checker == 3) //if choice is 2 then this weill be checking the choice
+                    {
+                        try {
+                            String name = StdinReader.readLine("Please enter your name here: ");
+
+                            String msg_fester = fester.view_bid_status(name);
+
+                            System.out.println(msg_fester + "\n");
+
+                        } catch (Exception e)
+
+                        {
+                            System.out.println(e);
+                        }
+                    }
+
+                }//end of while
+
+            } catch (Exception e) {
+                System.out.println("ERROR : " + e);
+                e.printStackTrace(System.out);
+            }
+        }
     }
-
-    public String auction_maker() {
-        return message;
-
-    }
-
-    public void auction_maker (String newmessage) {
-        message = newmessagemessage;
-    }
-}
+} 
