@@ -58,7 +58,7 @@ public class Seller {
 
                     String prompt;
 
-                    prompt = StdinReader.readLine("Choose 1 to 4: ");
+                    prompt = StdinReader.readLine("Choose 1 to 5: ");
 
                     choice_checker = Integer.parseInt(prompt);
 
