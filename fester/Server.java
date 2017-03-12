@@ -39,7 +39,7 @@ public class Server {
 
         // bind the Object Reference in Naming
 
-        NameComponent path[] = ncRef.to_name( "Auction_Fest" );
+        NameComponent path[] = ncRef.to_name( "auction_fest" );
         ncRef.rebind(path, href);
 
         System.out.println("Auction is ready for the festivity ....");
